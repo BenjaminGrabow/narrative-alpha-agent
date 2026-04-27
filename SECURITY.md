@@ -19,5 +19,6 @@ Include:
 
 - The default runtime does not require paid external APIs.
 - Do not commit API keys, access tokens, source data credentials, or private datasets.
+- Copy `.env.example` to `.env` for local secrets; `.env` is ignored by Git.
 - SQLite files are ignored by default and should not be committed.
 - Real notifier implementations should load secrets from environment variables or a secret manager.

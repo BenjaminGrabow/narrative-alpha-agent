@@ -41,7 +41,9 @@ Real notifier implementations should implement `Notifier` and be wired through r
 
 The default MVP path does not require external paid APIs.
 
-`OpenAICompatibleLlmClient` supports an OpenAI-compatible `/chat/completions` endpoint when a base URL and API key are supplied. The deterministic local embedding provider is used by default for replay stability.
+LLM credentials are configured with `.env.example`. The provider registry supports local, OpenAI, Anthropic Claude, DeepSeek, OpenRouter, Google Gemini, Cohere, Mistral, Groq, Together, xAI, Azure OpenAI, and custom OpenAI-compatible APIs.
+
+The deterministic local embedding provider is used by default for replay stability.
 
 ## CI
 
