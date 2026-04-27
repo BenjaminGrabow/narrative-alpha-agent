@@ -5,6 +5,22 @@
   "type": "module",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjaminGrabow/narrative-alpha-agent.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BenjaminGrabow/narrative-alpha-agent/issues"
+  },
+  "homepage": "https://github.com/BenjaminGrabow/narrative-alpha-agent#readme",
+  "keywords": [
+    "langgraph",
+    "agents",
+    "backtesting",
+    "narrative-detection",
+    "quant-research",
+    "typescript"
+  ],
   "scripts": {
     "dev": "tsx src/cli/dev.ts",
     "ingest": "tsx src/cli/ingest.ts",

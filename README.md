@@ -107,6 +107,15 @@ pnpm run typecheck
 pnpm run test
 ```
 
+## Project Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Backtesting](docs/BACKTESTING.md)
+- [Operations](docs/OPERATIONS.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security](SECURITY.md)
+- [Changelog](CHANGELOG.md)
+
 ## Demo Dataset
 
 `src/backtest/demoDataset.ts` simulates:
