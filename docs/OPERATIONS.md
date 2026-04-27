@@ -34,8 +34,11 @@ The default runtime uses:
 
 - `ConsoleNotifier`
 - `TelegramNotifierStub`
+- `DiscordNotifier` when `DISCORD_WEBHOOK_URL` is configured
 
 Real notifier implementations should implement `Notifier` and be wired through runtime construction.
+
+See [Notifications](NOTIFICATIONS.md).
 
 ## LLM and Embeddings
 
@@ -44,6 +47,14 @@ The default MVP path does not require external paid APIs.
 LLM credentials are configured with `.env.example`. The provider registry supports local, OpenAI, Anthropic Claude, DeepSeek, OpenRouter, Google Gemini, Cohere, Mistral, Groq, Together, xAI, Azure OpenAI, and custom OpenAI-compatible APIs.
 
 The deterministic local embedding provider is used by default for replay stability.
+
+## Observability
+
+LangSmith tracing is configured through `.env.example`.
+
+Set `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY`, and `LANGSMITH_PROJECT` to trace LangGraph runs. Runtime metadata includes replay timestamp, document count, tags, project, and thread ID.
+
+See [Observability](OBSERVABILITY.md).
 
 ## CI
 

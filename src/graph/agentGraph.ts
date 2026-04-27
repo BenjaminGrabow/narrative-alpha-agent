@@ -1,5 +1,6 @@
 import { END, MemorySaver, START, StateGraph } from "@langchain/langgraph";
 import type { AppConfig } from "../config/defaults.js";
+import type { LangSmithConfig } from "../config/observability.js";
 import type { AlertService } from "../services/AlertService.js";
 import type { ClusteringService } from "../services/ClusteringService.js";
 import type { NarrativeLifecycleService } from "../services/NarrativeLifecycleService.js";
@@ -53,12 +54,28 @@ export const createNarrativeGraph = (dependencies: GraphDependencies) => {
 export class NarrativeGraphRunner {
   private readonly graph: ReturnType<typeof createNarrativeGraph>;
 
-  constructor(dependencies: GraphDependencies) {
+  constructor(
+    dependencies: GraphDependencies,
+    private readonly langSmith: LangSmithConfig = {
+      tracingEnabled: false,
+      runName: "narrative-alpha-agent",
+      tags: []
+    }
+  ) {
     this.graph = createNarrativeGraph(dependencies);
   }
 
   async run(input: SystemState, threadId = "default"): Promise<SystemState> {
     const result = await this.graph.invoke(input, {
+      runName: this.langSmith.runName,
+      tags: this.langSmith.tags,
+      metadata: {
+        app: "narrative-alpha-agent",
+        timestamp: input.timestamp,
+        documentCount: input.documents.length,
+        langSmithProject: this.langSmith.project,
+        tracingEnabled: this.langSmith.tracingEnabled
+      },
       configurable: {
         thread_id: threadId
       }
