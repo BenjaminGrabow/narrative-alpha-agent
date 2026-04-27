@@ -100,3 +100,5 @@ Real source connectors should implement `DocumentSourceConnector` from `src/type
 - Scope keys to the minimum provider permissions.
 - Rotate keys after accidental disclosure.
 - Keep production secrets in a secret manager, not in local files.
+
+LangSmith and notifier secrets are also listed in `.env.example`.

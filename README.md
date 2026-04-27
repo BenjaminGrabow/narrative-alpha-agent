@@ -113,6 +113,8 @@ pnpm run test
 - [Backtesting](docs/BACKTESTING.md)
 - [Operations](docs/OPERATIONS.md)
 - [Providers and Secrets](docs/PROVIDERS.md)
+- [Observability](docs/OBSERVABILITY.md)
+- [Notifications](docs/NOTIFICATIONS.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 - [Changelog](CHANGELOG.md)
