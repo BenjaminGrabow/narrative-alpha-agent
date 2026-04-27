@@ -112,6 +112,7 @@ pnpm run test
 - [Architecture](docs/ARCHITECTURE.md)
 - [Backtesting](docs/BACKTESTING.md)
 - [Operations](docs/OPERATIONS.md)
+- [Providers and Secrets](docs/PROVIDERS.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 - [Changelog](CHANGELOG.md)
