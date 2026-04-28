@@ -1,0 +1,21 @@
+services:
+  narrative-alpha-agent:
+    build:
+      context: .
+      target: runner
+    image: narrative-alpha-agent:local
+    environment:
+      NAA_ENV: development
+      NAA_DATABASE_PATH: /data/naa.sqlite
+      NAA_LLM_PROVIDER: local
+      LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
+      LANGSMITH_PROJECT: ${LANGSMITH_PROJECT:-narrative-alpha-agent}
+      DISCORD_WEBHOOK_URL: ${DISCORD_WEBHOOK_URL:-}
+      DISCORD_USERNAME: ${DISCORD_USERNAME:-Narrative Alpha Agent}
+    volumes:
+      - naa-data:/data
+    command: ["pnpm", "run", "replay"]
+
+volumes:
+  naa-data:

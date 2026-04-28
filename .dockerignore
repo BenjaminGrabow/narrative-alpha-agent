@@ -1,0 +1,14 @@
+.git
+.github
+node_modules
+dist
+coverage
+*.db
+*.db-shm
+*.db-wal
+.env
+.DS_Store
+npm-debug.log
+pnpm-debug.log
+Dockerfile
+docker-compose.yml

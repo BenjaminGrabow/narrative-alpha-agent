@@ -8,6 +8,8 @@ pnpm run replay
 pnpm run ingest
 pnpm run dev
 pnpm run check
+docker build -t narrative-alpha-agent:local .
+docker run --rm narrative-alpha-agent:local
 ```
 
 ## Data and Storage
@@ -15,6 +17,8 @@ pnpm run check
 `pnpm run ingest` writes narrative state to `naa.sqlite` in the project root. SQLite files are ignored by Git.
 
 `pnpm run replay` uses an in-memory database by default and does not write persistent state.
+
+Docker runtime uses `/data/naa.sqlite` by default for persistent SQLite state when running ingest. See [Docker](DOCKER.md).
 
 ## Configuration
 
