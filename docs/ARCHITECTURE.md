@@ -2,7 +2,7 @@
 
 Narrative Alpha Agent is organized as a set of injectable domain services orchestrated by LangGraph and instrumented for LangSmith.
 
-This project is intentionally built around the LangChain ecosystem:
+The runtime uses LangGraph and LangSmith for the parts of the system where they are technically useful:
 
 - LangGraph provides typed state, named graph nodes, checkpointing, and replay re-entry.
 - LangSmith provides trace visibility for graph runs, node spans, run metadata, tags, and replay checkpoints.
