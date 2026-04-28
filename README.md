@@ -1,12 +1,12 @@
 # Narrative Alpha Agent
 
-Production-grade LangGraph + LangSmith infrastructure for detecting, scoring, observing, and replaying emerging social and news narratives.
+LangGraph + LangSmith infrastructure for detecting, scoring, observing, and replaying emerging social and news narratives.
 
 Narrative Alpha Agent (NAA) is a production-oriented TypeScript MVP for emerging narrative research. It uses LangGraph as the stateful orchestration layer, LangSmith-ready tracing for graph observability, deterministic local embeddings by default, SQLite for persisted long-term narrative memory, and a replay engine designed for historical backtesting without future data leakage.
 
-## Why This Project Is LangChain-Native
+## LangGraph And LangSmith Integration
 
-NAA is designed to show the LangChain ecosystem used deliberately in a serious AI systems setting:
+NAA uses LangGraph and LangSmith as first-class infrastructure components:
 
 - **LangGraph orchestration:** every narrative run is represented as a typed graph with named nodes, checkpointable state, and replay re-entry.
 - **LangSmith observability:** graph invocations carry run names, tags, metadata, timestamps, document counts, and thread IDs for trace inspection.
