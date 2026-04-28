@@ -129,6 +129,13 @@ pnpm run ingest
 pnpm run dev
 ```
 
+Docker:
+
+```bash
+docker build -t narrative-alpha-agent:local .
+docker run --rm narrative-alpha-agent:local
+```
+
 Quality gates:
 
 ```bash
@@ -146,6 +153,7 @@ pnpm run test
 - [Providers and Secrets](docs/PROVIDERS.md)
 - [Observability](docs/OBSERVABILITY.md)
 - [Notifications](docs/NOTIFICATIONS.md)
+- [Docker](docs/DOCKER.md)
 - [Contributing](CONTRIBUTING.md)
 - [Security](SECURITY.md)
 - [Changelog](CHANGELOG.md)

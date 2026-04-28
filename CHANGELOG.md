@@ -22,3 +22,4 @@ The format is based on Keep a Changelog, and this project uses Conventional Comm
 - Synthetic demo dataset and CLI commands
 - Vitest coverage for clustering, scoring, replay, and lifecycle transitions
 - Open-source documentation, CI, and project governance files
+- Dockerfile, Docker Compose, and containerized replay smoke test

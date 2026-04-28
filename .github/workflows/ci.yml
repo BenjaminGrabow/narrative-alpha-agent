@@ -36,3 +36,12 @@ jobs:
 
       - name: Replay smoke test
         run: pnpm run replay
+
+      - name: Build Docker test stage
+        run: docker build --target test -t narrative-alpha-agent:test .
+
+      - name: Build Docker runtime image
+        run: docker build -t narrative-alpha-agent:ci .
+
+      - name: Docker replay smoke test
+        run: docker run --rm narrative-alpha-agent:ci
