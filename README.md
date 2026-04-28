@@ -1,6 +1,26 @@
 # Narrative Alpha Agent
 
-Narrative Alpha Agent (NAA) is a production-oriented TypeScript MVP for detecting, scoring, and replaying emerging social and news narratives. It uses LangGraph as the orchestration layer, deterministic local embeddings by default, SQLite for persisted long-term narrative memory, and a replay engine designed for backtesting without future data leakage.
+Production-grade LangGraph + LangSmith infrastructure for detecting, scoring, observing, and replaying emerging social and news narratives.
+
+Narrative Alpha Agent (NAA) is a production-oriented TypeScript MVP for emerging narrative research. It uses LangGraph as the stateful orchestration layer, LangSmith-ready tracing for graph observability, deterministic local embeddings by default, SQLite for persisted long-term narrative memory, and a replay engine designed for historical backtesting without future data leakage.
+
+## Why This Project Is LangChain-Native
+
+NAA is designed to show the LangChain ecosystem used deliberately in a serious AI systems setting:
+
+- **LangGraph orchestration:** every narrative run is represented as a typed graph with named nodes, checkpointable state, and replay re-entry.
+- **LangSmith observability:** graph invocations carry run names, tags, metadata, timestamps, document counts, and thread IDs for trace inspection.
+- **Provider-agnostic model access:** OpenAI-compatible providers, Claude, DeepSeek, OpenRouter, Gemini, Cohere, Mistral, Groq, Together, xAI, Azure OpenAI, and local deterministic mode are all supported through clean ports.
+- **Production discipline:** strict TypeScript, SQLite persistence, deterministic replay, CI quality gates, branch protection, issue templates, security policy, and documented operations.
+
+LangSmith tracing is opt-in and configured through `.env.example`:
+
+```bash
+LANGSMITH_TRACING=true
+LANGSMITH_API_KEY=lsv2_...
+LANGSMITH_PROJECT=narrative-alpha-agent
+LANGSMITH_TAGS=naa,langgraph,narrative-replay
+```
 
 ## Architecture
 
@@ -62,6 +82,17 @@ type SystemState = {
 ```
 
 The graph is compiled with a `MemorySaver` checkpointer, and every node returns partial state updates. The graph can be invoked repeatedly with the same runner, which is what replay uses for time-cursor re-entry.
+
+## LangSmith Observability
+
+`NarrativeGraphRunner` passes LangChain runnable config into each LangGraph invocation:
+
+- `runName`
+- `tags`
+- run metadata for app name, replay timestamp, document count, project, and tracing status
+- `thread_id` for checkpointing and replay-specific trace grouping
+
+When `LANGSMITH_TRACING=true`, these graph runs and node spans are visible in LangSmith under the configured project. This makes replay checkpoints, live ingestion runs, and alert-producing executions inspectable instead of opaque.
 
 ## Narrative Impact Probability
 
@@ -134,10 +165,10 @@ pnpm run test
 
 The MVP is intentionally local-first but replaceable:
 
-- LLM access uses an OpenAI-compatible interface in `OpenAICompatibleLlmClient`.
+- LLM access uses a multi-provider registry with local, OpenAI, Anthropic Claude, DeepSeek, OpenRouter, Google Gemini, Cohere, Mistral, Groq, Together, xAI, Azure OpenAI, and custom OpenAI-compatible support.
 - Embeddings implement the `EmbeddingProvider` port.
 - Vector search implements the `VectorStore` port.
-- Alerts implement the `Notifier` port with console and Telegram stub examples.
+- Alerts implement the `Notifier` port with console, Discord webhook, and Telegram stub examples.
 - Narrative memory implements the `NarrativeRepository` port with SQLite and in-memory backends.
 
 ## Limitations

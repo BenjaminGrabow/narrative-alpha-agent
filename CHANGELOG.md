@@ -9,6 +9,7 @@ The format is based on Keep a Changelog, and this project uses Conventional Comm
 ### Added
 
 - LangGraph orchestration with six required graph nodes
+- LangSmith-ready graph observability with run names, tags, metadata, and replay thread IDs
 - Strongly typed narrative system state
 - Deterministic local embeddings and in-memory vector store
 - SQLite and in-memory narrative repositories
@@ -16,6 +17,7 @@ The format is based on Keep a Changelog, and this project uses Conventional Comm
 - Narrative lifecycle state machine
 - Configurable Narrative Impact Probability scoring
 - Console alerting and Telegram notifier stub
+- Discord webhook alerting
 - Deterministic backtesting replay engine
 - Synthetic demo dataset and CLI commands
 - Vitest coverage for clustering, scoring, replay, and lifecycle transitions

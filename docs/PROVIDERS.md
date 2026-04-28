@@ -102,3 +102,5 @@ Real source connectors should implement `DocumentSourceConnector` from `src/type
 - Keep production secrets in a secret manager, not in local files.
 
 LangSmith and notifier secrets are also listed in `.env.example`.
+
+LangSmith is not a model provider; it is the observability layer for LangGraph/LangChain runs. Configure it with `LANGSMITH_TRACING`, `LANGSMITH_API_KEY`, and `LANGSMITH_PROJECT`.

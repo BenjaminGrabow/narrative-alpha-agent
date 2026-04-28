@@ -1,8 +1,10 @@
 # Observability
 
-Narrative Alpha Agent uses LangGraph as its execution layer, so graph runs can be traced with LangSmith through LangChain's standard tracing environment variables.
+Narrative Alpha Agent is built to be LangSmith-observable. LangGraph is the execution layer, and graph runs can be traced with LangSmith through LangChain's standard tracing environment variables.
 
 Tracing is disabled by default to keep local development and replay offline.
+
+For a LangChain/LangGraph review, this is one of the most important integration points: NAA does not treat observability as an afterthought. The graph runner attaches run names, tags, replay metadata, and thread IDs so narrative runs can be inspected after the fact.
 
 ## Enable LangSmith
 
@@ -35,6 +37,14 @@ The runtime reads these values in `src/config/observability.ts`.
 - `thread_id` for LangGraph checkpointing and replay re-entry
 
 When LangSmith tracing is enabled, LangGraph/LangChain records the graph run and child node spans under the configured project.
+
+This gives reviewers and operators visibility into:
+
+- which documents were visible at a replay checkpoint
+- which graph nodes executed
+- how many clusters and narratives were produced
+- which run/thread generated an alert
+- whether live and replay paths are using the same graph execution surface
 
 ## Replay Tracing
 
