@@ -50,7 +50,7 @@ The deterministic local embedding provider is used by default for replay stabili
 
 ## Observability
 
-LangSmith tracing is configured through `.env.example`.
+LangSmith tracing is configured through `.env.example` and is the primary observability path for LangGraph execution.
 
 Set `LANGSMITH_TRACING=true`, `LANGSMITH_API_KEY`, and `LANGSMITH_PROJECT` to trace LangGraph runs. Runtime metadata includes replay timestamp, document count, tags, project, and thread ID.
 
